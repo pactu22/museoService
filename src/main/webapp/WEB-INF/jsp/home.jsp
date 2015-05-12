@@ -13,7 +13,7 @@
 	</br>
 
 	<b>Todas las obras de todos los museos: </b> /allobras
-
+</br>
 	<b>Crear obra: </b>
 	/crear/{titulo}/{autor}/{estilo}/{coleccion}/{museo}
 	</br>
@@ -23,6 +23,12 @@
 	/editar/{id}/{titulo}/{autor}/{estilo}/{coleccion}/{museo}
 	</br>
 	<b>Obtener obra: </b> /obras/{id}
+
+</br>
+curl -X POST https://museo-project.herokuapp.com/crear/Museo2/descripcion
+</br>
+curl -X POST https://museo-project.herokuapp.com/crear/tituloObra/Picasso/estilooooo/coleccion10/Museo2
+
 
 </body>
 </html>
