@@ -34,6 +34,13 @@ public class WSRestController {
 		return museoService.getAllObrasByMuseo(museo);
 	}
 	
+	@RequestMapping(value = RestUrisConstants.CREATE_MUSEO, method = RequestMethod.POST)
+	public void crearMuseo(@PathVariable("nombre") String museo, @PathVariable("descripcion") String descripcion) {
+		System.out.println("MUSEO:" + museo);
+		
+		 museoService.newMuseo(museo, descripcion);
+	}
+	
 	//Operaciones CRUD
 	
 	@RequestMapping(value = RestUrisConstants.CREATE_OBRA, method = RequestMethod.POST)
