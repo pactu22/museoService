@@ -9,6 +9,7 @@ import edu.upc.pes.dao.MuseoRepository;
 import edu.upc.pes.dao.ObraRepository;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
+import edu.upc.pes.model.Visitante;
 
 @Service
 public class MuseoServiceImpl implements MuseoService {
@@ -20,18 +21,16 @@ public class MuseoServiceImpl implements MuseoService {
 	ObraRepository obraRepository;
 
 	@Override
-	public void newMuseo(String nombre, String descripcion) {
-		Museo museo = new Museo(nombre, descripcion);
-		museoRepository.save(museo);
+	public Museo newMuseo(Museo museo) {
+		if(museoRepository.exists(museo.getNombre())) return null;
+		return museoRepository.save(museo);
 		
 	}
 
 	@Override
-	public void agregarObra(String titulo, String autor,String estilo, String coleccion, String museo) {
-		Museo mus = museoRepository.findOne(museo);
-		Obra o = new Obra(titulo,autor,estilo, coleccion, mus);
-		obraRepository.save(o);
-		mus.addObra(o);
+	public void agregarObra(Obra obra, Museo museo) {
+		museo.addObra(obra);
+		museoRepository.save(museo);
 		
 	}
 
@@ -43,34 +42,22 @@ public class MuseoServiceImpl implements MuseoService {
 	}
 
 	@Override
-	public List<Obra> getAllObrasByMuseo(String museo) {
-		Museo mus = museoRepository.findOne(museo);
-		return mus.getObras();
+	public List<Obra> getAllObrasMuseo(Museo museo) {
+		return museo.getObras();
 	}
 
 	@Override
-	public void borrarObra(String idObra) {
-		Obra o = obraRepository.findOne(Long.parseLong(idObra));
-		obraRepository.delete(o);
+	public void borrarObra(Obra obra) {
+		obraRepository.delete(obra);
 		//se borra de la coleccion??
 		
 	}
 
 	@Override
-	public void editarObra(String idObra, String titulo, String autor,
-			String estilo, String coleccion, String museo) {
-		Obra o = obraRepository.findOne(Long.parseLong(idObra));
-		Museo mus = museoRepository.findOne(museo);
-		o.editar(titulo, autor, estilo, coleccion, mus);
-		obraRepository.save(o);
-		
+	public List<Visitante> getAllVisitantes(Museo museo) {
+		return museo.getVisitantes();
 	}
-
-	@Override
-	public Obra getObra(String idObra) {
-
-		return obraRepository.findOne(Long.parseLong(idObra));
-	}
+	
 	
 	
 	

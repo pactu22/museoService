@@ -4,18 +4,15 @@ import java.util.List;
 
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
+import edu.upc.pes.model.Visitante;
 
 public interface MuseoService {
 
-	public void newMuseo(String nombre, String descripcion);
-	public void agregarObra(String titulo, String autor,String estilo, String coleccion, String museo );
+	public Museo newMuseo(Museo museo);
+	public void agregarObra(Obra obra, Museo museo );
 	public Museo findByNombre(String nombre);
-	
-	public List<Obra> getAllObrasByMuseo(String museo);
-	
-	public void borrarObra(String titulo);
-	public void editarObra(String idObra, String titulo, String autor,
-			String estilo, String coleccion, String museo);
-	public Obra getObra(String id);
+	public List<Obra> getAllObrasMuseo(Museo museo);
+	public void borrarObra(Obra obra);
+	public List<Visitante> getAllVisitantes(Museo museo);
 	
 }

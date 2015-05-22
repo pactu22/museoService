@@ -4,65 +4,42 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
-import edu.upc.pes.service.MuseoService;
-import edu.upc.pes.service.ObraService;
+import edu.upc.pes.service.RestService;
 
 @RestController
+@RequestMapping("/rest")
 public class WSRestController {
 
 	@Autowired
-	private ObraService obraService;
-	
-	@Autowired
-	private MuseoService museoService;
+	private RestService restService;
 	
 	
 	
 	@RequestMapping(value = RestUrisConstants.GET_ALL_OBRAS, method = RequestMethod.GET)
 	public List<Obra> getAllObras() {
-		return obraService.allObras();
+		return restService.allObras();
 	}
 	@RequestMapping(value = RestUrisConstants.GET_OBRAS_MUSEO, method = RequestMethod.GET)
 	public List<Obra> getAllObrasByMuseo(@PathVariable("museo") String museo) {
 		System.out.println("MUSEO:" + museo);
-		
-		return museoService.getAllObrasByMuseo(museo);
+		return restService.obrasDeMuseo(museo);
 	}
-	
-	@RequestMapping(value = RestUrisConstants.CREATE_MUSEO, method = RequestMethod.POST)
-	public void crearMuseo(@PathVariable("nombre") String museo, @PathVariable("descripcion") String descripcion) {
-		System.out.println("MUSEO:" + museo);
-		
-		 museoService.newMuseo(museo, descripcion);
+	@RequestMapping(value = RestUrisConstants.NEW_MUSEO, method = RequestMethod.POST)
+	public Museo nuevoMuseo(@RequestBody Museo museo) {
+		return restService.nuevoMuseo(museo);
 	}
-	
-	//Operaciones CRUD
-	
-	@RequestMapping(value = RestUrisConstants.CREATE_OBRA, method = RequestMethod.POST)
-    public void nuevaObra(@PathVariable("titulo") String titulo,@PathVariable("autor") String autor,@PathVariable("estilo") String estilo,@PathVariable("coleccion") String coleccion,@PathVariable("museo") String museo) {
-		
-		museoService.agregarObra(titulo, autor,estilo,coleccion,museo);
-    }
-	
-	@RequestMapping(value = RestUrisConstants.DELETE_OBRA, method = RequestMethod.POST)
-    public void borrarObra(@PathVariable("id") String id) {
-		museoService.borrarObra(id);
-    }
-	
-	@RequestMapping(value = RestUrisConstants.EDIT_OBRA, method = RequestMethod.POST)
-    public void editarObra(@PathVariable("id") String idObra, @PathVariable("titulo") String titulo,@PathVariable("autor") String autor,@PathVariable("estilo") String estilo,@PathVariable("coleccion") String coleccion,@PathVariable("museo") String museo) {
-		museoService.editarObra(idObra, titulo, autor,estilo,coleccion,museo);
-    }
-	
-	@RequestMapping(value = RestUrisConstants.GET_OBRA, method = RequestMethod.GET)
-    public Obra getObra(@PathVariable("id") String idObra) {
-		return museoService.getObra(idObra);
-    }
+	@RequestMapping(value = RestUrisConstants.NEW_OBRA_OF_MUSEO, method = RequestMethod.POST)
+	public Obra nuevaObraAlMuseo(@RequestBody Obra obra, @PathVariable("museo") String museo) {
+		System.out.println("DENTRO");
+		return restService.nuevaObraMuseo(obra,museo);
+	}
 	
      
 }

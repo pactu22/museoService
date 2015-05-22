@@ -29,6 +29,7 @@ curl -X POST https://museo-project.herokuapp.com/crear/Museo2/descripcion
 </br>
 curl -X POST https://museo-project.herokuapp.com/crear/tituloObra/Picasso/estilooooo/coleccion10/Museo2
 
+<img src="data:image/jpeg;base64,${imagen}"  width="50" height="50">`
 
 </body>
 </html>
