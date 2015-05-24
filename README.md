@@ -1,15 +1,16 @@
-**ASW13 Web application with Spring Framework**
+### Aplicacion desplegada en: ###
 
-* Lluís Castillo
-* Alejandra Porras
-* Zaira Quesada
+** https://museo-project.herokuapp.com/**
 
 
+* Creamos un museo desde el terminal:
 
-Aplicación desplegada en Heroku en la siguiente URL:
+curl -X POST https://museo-project.herokuapp.com/crear/Museo2/descripcion 
 
-https://hackingnews.herokuapp.com/
+* Creamos las obras ligadas al Museo2(previamente creado)
 
+curl -X POST https://museo-project.herokuapp.com/crear/tituloObra/Picasso/estilooooo/coleccion10/Museo2
 
-La aplicación permite hacer submits de historias y preguntas a usuario que previamente se hayan logueado.
-Además, también permite comentar estas submissions, pudiendo tambien replicar y puntuar comentarios.
+* Listamos obras:
+
+ https://museo-project.herokuapp.com/allobras
