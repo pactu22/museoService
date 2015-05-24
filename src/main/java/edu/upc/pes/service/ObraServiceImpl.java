@@ -46,9 +46,8 @@ public class ObraServiceImpl implements ObraService {
 
 
 	@Override
-	public void borrarObra(Long idObra) {
-		obraRepository.delete(idObra);
-		
+	public void borrarObra(Obra obra) {
+		obraRepository.delete(obra);
 	}
 
 

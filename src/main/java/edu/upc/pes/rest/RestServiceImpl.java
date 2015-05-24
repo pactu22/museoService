@@ -247,5 +247,41 @@ public UsuarioRegistrado editarVisitante(String email, String nombre,
 
 */
 
+	@Override
+	public Obra editarObraMuseo(WrapperObra obra, String museo, Long idObra) {
+		Obra obraAntigua = obraService.getObra(idObra);
+		Museo mus = museoService.findByNombre(museo);
+		Coleccion antigua = obraAntigua.getColeccion();
+		Obra obraNueva = obraService.getObra(idObra);
+		Coleccion col = null;
+		if(obra.getNombreColeccion() != null){
+			if(antigua != null ) antigua.borrarObra(obraAntigua);
+			col = coleccionService.getColeccion(obra.getNombreColeccion());
+			obraNueva.setColeccion(col);		
+
+		}
+		else obraNueva.setColeccion(null);
+		
+		Autor autor = autorService.getAtutor(obra.getIdAutor());
+		
+		obraNueva.setTitulo(obra.getTitulo());
+		obraNueva.setAutor(autor);
+		obraNueva.setEstilo(obra.getEstilo());
+		obraNueva.setInformacion(obra.getInformacion());
+		obraNueva.setBeacon(obra.getIdBeacon());
+		if(col != null) col.addObra(obraNueva);		
+		mus.editarObra(obraAntigua,obraNueva);
+		return obraService.newObra(obraNueva);
+	}
+
+	@Override
+	public List<Obra> borrarObraMuseo(Long idObra, String museo) {
+		Museo mus = museoService.findByNombre(museo);
+		Obra o = obraService.getObra(idObra);
+		mus.borrarObra(o);
+		obraService.borrarObra(o);
+		return mus.getObras();
+	}
+
 
 }

@@ -19,5 +19,7 @@ public class RestUrisConstants {
 	public static final String GET_COLECCIONES = "/colecciones";
 
 	public static final String EDITAR_OBRA_OF_MUSEO = "/museos/{museo}/obras/{id}";
+
+	public static final String BORRAR_OBRA_OF_MUSEO = "museos/{museo}/obras/{id}/borrar";
 	
 }

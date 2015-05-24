@@ -28,6 +28,10 @@ public interface RestService {
 
 	public List<Coleccion> allColecciones();
 
+	public Obra editarObraMuseo(WrapperObra obra, String museo, Long idObra);
+
+	public List<Obra> borrarObraMuseo(Long idObra, String museo);
+
 	
 	/*
 public Coleccion nuevaColeccion(String nombreColeccion, String nombreMuseo);

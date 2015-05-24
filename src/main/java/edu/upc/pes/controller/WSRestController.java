@@ -51,14 +51,18 @@ public class WSRestController {
 		System.out.println("MUSEO:" + museo);
 		return restService.obrasDeMuseo(museo);
 	}
-	/*
+	
 	@RequestMapping(value = RestUrisConstants.EDITAR_OBRA_OF_MUSEO, method = RequestMethod.PUT)
-	public Obra editarObra(@RequestBody WrapperObra obra, @PathVariable("museo") String museo, @PathVariable("id") String idObra) {
-		System.out.println("DENTRO");
-		return restService.nuevaObraMuseo(obra,museo);
+	public Obra editarObra(@RequestBody WrapperObra obra, @PathVariable("museo") String museo, @PathVariable("id") Long idObra) {
+		//TODO MODIFICAR OBRA DE MSEO
+		return restService.editarObraMuseo(obra,museo, idObra);
+	}
+	@RequestMapping(value = RestUrisConstants.BORRAR_OBRA_OF_MUSEO, method = RequestMethod.POST)
+	public List<Obra> borrarObra( @PathVariable("museo") String museo, @PathVariable("id") Long idObra) {
+		return restService.borrarObraMuseo(idObra,museo);
 	}
 	
-	*/
+	
 	@RequestMapping(value = RestUrisConstants.GET_OBRAS, method = RequestMethod.GET)
 	public List<Obra> getAllObras() {
 		return restService.allObras();

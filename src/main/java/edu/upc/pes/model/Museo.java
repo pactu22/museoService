@@ -91,6 +91,9 @@ public class Museo {
 	public void setColecciones(List<Coleccion> colecciones) {
 		this.colecciones = colecciones;
 	}
+	public void borrarObra(Obra o){
+		obras.remove(o);
+	}
 	public void addObra(Obra o){
 		obras.add(o);
 	}
@@ -104,5 +107,11 @@ public class Museo {
 	public boolean tieneColeccion(Coleccion c){
 
 		return colecciones.contains(c);
+	}
+	public void editarObra(Obra antigua, Obra nueva) {
+		int indice = obras.indexOf(antigua);
+		obras.remove(indice);
+		obras.add(indice, nueva);
+		
 	}
 }

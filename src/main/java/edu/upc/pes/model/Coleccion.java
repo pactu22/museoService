@@ -62,7 +62,9 @@ public class Coleccion {
 	public void addObra(Obra o){
 		obras.add(o);
 	}
-	
+	public void borrarObra(Obra o){
+		obras.remove(o);
+	}
 	public boolean tieneObra(Obra o){
 		return obras.contains(o);
 	}
