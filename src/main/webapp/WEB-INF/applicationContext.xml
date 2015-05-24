@@ -15,22 +15,22 @@
 	
 	<jpa:repositories base-package="edu.upc.pes.dao" />
 	
-	<bean id="dataSource"
+		<bean id="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName">
             <value>org.postgresql.Driver</value>
         </property>
         <property name="url">
-            <value>jdbc:postgresql://ec2-50-19-233-111.compute-1.amazonaws.com:5432/d9p5m8bp3uvlre</value>
+            <value>jdbc:postgresql://localhost:5432/pes</value>
         </property>
         <property name="username">
-            <value>lqdhqpytsuobrf</value>
+            <value>postgres</value>
         </property>
         <property name="password">
-            <value>gHBT1EpaQNxxDN-Sn0c6YnW9fK</value>
+            <value>Asterion</value>
         </property>
     </bean>
- 
+	
     <bean id="entityManagerFactory"
         class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -41,10 +41,10 @@
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
-                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">false</prop>
              
-	<!--  	<prop key="hibernate.hbm2ddl.auto">create</prop> -->
+	  	<!-- <prop key="hibernate.hbm2ddl.auto">create</prop>  -->
             </props>
         </property>
     </bean>

@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -15,9 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Coleccion {
 	@Id
-	@GeneratedValue
-	private Long id;
-	
 	private String nombre;
 	
 	@JsonIgnore
@@ -27,8 +23,6 @@ public class Coleccion {
 	@ManyToOne
 	private Museo museo;
 	
-	@ManyToOne
-	private Exposicion exposicion;
 	
 	public Coleccion(){
 		obras = new ArrayList<Obra>();
@@ -39,13 +33,6 @@ public class Coleccion {
 		obras = new ArrayList<Obra>();
 	}
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -71,14 +58,22 @@ public class Coleccion {
 		this.museo = museo;
 	}
 	
-	public Exposicion getExposicion() {
-		return exposicion;
-	}
-	public void setExposicion(Exposicion exposicion) {
-		this.exposicion = exposicion;
-	}
+	
 	public void addObra(Obra o){
 		obras.add(o);
 	}
 	
+	public boolean tieneObra(Obra o){
+		return obras.contains(o);
+	}
+	@Override
+	public boolean equals(Object u){
+		Coleccion col= (Coleccion) u;
+		return (col.getNombre() == this.nombre);
+	}
+	
+	@Override
+	public int hashCode(){
+		return nombre.hashCode();
+	}
 }

@@ -32,9 +32,7 @@ public class ObraServiceImpl implements ObraService {
 
 
 	@Override
-	public Obra newObra(Obra obra, Museo museo) {
-		
-		obra.setMuseo(museo);
+	public Obra newObra(Obra obra) {
 		return obraRepository.save(obra);
 		
 	}
@@ -55,21 +53,10 @@ public class ObraServiceImpl implements ObraService {
 
 
 	@Override
-	public Obra getObraByTitulo(String titulo) {
-		return obraRepository.findByTitulo(titulo);
+	public Obra getObraByTituloAndAutor(String titulo, Long idAutor) {
+		return obraRepository.findByTituloAndAutor(titulo, idAutor);
 	}
 
-
-
-	@Override
-	public Obra editarObra(Obra o, String titulo, String autor,
-			String estilo,  Museo museo) {
-		o.setAutor(autor);
-		o.setTitulo(titulo);
-		o.setEstilo(estilo);
-		o.setMuseo(museo);
-		return obraRepository.save(o);
-	}
 
 
 

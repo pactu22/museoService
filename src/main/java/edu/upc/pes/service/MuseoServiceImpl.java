@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.upc.pes.dao.MuseoRepository;
 import edu.upc.pes.dao.ObraRepository;
+import edu.upc.pes.model.Coleccion;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
 import edu.upc.pes.model.Visitante;
@@ -23,6 +24,11 @@ public class MuseoServiceImpl implements MuseoService {
 	@Override
 	public Museo newMuseo(Museo museo) {
 		if(museoRepository.exists(museo.getNombre())) return null;
+		return museoRepository.save(museo);
+		
+	}
+	@Override
+	public Museo persist(Museo museo) {
 		return museoRepository.save(museo);
 		
 	}
@@ -57,8 +63,13 @@ public class MuseoServiceImpl implements MuseoService {
 	public List<Visitante> getAllVisitantes(Museo museo) {
 		return museo.getVisitantes();
 	}
-	
-	
+	@Override
+	public List<Coleccion>allColecciones(String museo){
+		Museo mus = museoRepository.findOne(museo);
+		if(mus != null)return mus.getColecciones();
+		return null;
+	}
+
 	
 	
 }

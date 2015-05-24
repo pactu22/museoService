@@ -24,28 +24,24 @@ public class Museo {
 	@OneToMany(mappedBy = "museo",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
  	private List<Obra> obras;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "museo",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private List<Visitante> visitantes;  
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "museo",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private List<Coleccion> colecciones;  
-	
-	@OneToMany(mappedBy = "museo",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-	private List<Exposicion> exposiciones;  
 	
 	
 	public Museo(){
 		obras = new ArrayList<Obra>();
 		visitantes = new ArrayList<Visitante>();
-		exposiciones = new ArrayList<Exposicion>();
 		colecciones = new ArrayList<Coleccion>();
 	}
 	public Museo(String nombre){
 		this.nombre = nombre;
 		obras = new ArrayList<Obra>();
 		visitantes = new ArrayList<Visitante>();
-		exposiciones = new ArrayList<Exposicion>();
 		colecciones = new ArrayList<Coleccion>();
 	}
 	public Museo(String nombre, String descripcion){
@@ -53,7 +49,6 @@ public class Museo {
 		this.descripcion = descripcion;
 		obras = new ArrayList<Obra>();
 		visitantes = new ArrayList<Visitante>();
-		exposiciones = new ArrayList<Exposicion>();
 		colecciones = new ArrayList<Coleccion>();
 	}
 	
@@ -96,26 +91,18 @@ public class Museo {
 	public void setColecciones(List<Coleccion> colecciones) {
 		this.colecciones = colecciones;
 	}
-	public List<Exposicion> getExposiciones() {
-		return exposiciones;
-	}
-	public void setExposiciones(List<Exposicion> exposiciones) {
-		this.exposiciones = exposiciones;
-	}
-	
 	public void addObra(Obra o){
 		obras.add(o);
-	}
-	public void addExposicion(Exposicion e){
-		exposiciones.add(e);
 	}
 	public void addColeccion(Coleccion c){
 		colecciones.add(c);
 	}
 	public boolean tieneObra(Obra o){
-		for(Obra ob : obras){
-			if(ob.getTitulo().equals(o.getTitulo()))return true;
-		}
-		return false;
+
+		return obras.contains(o);
+	}
+	public boolean tieneColeccion(Coleccion c){
+
+		return colecciones.contains(c);
 	}
 }

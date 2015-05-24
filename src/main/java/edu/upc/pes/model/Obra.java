@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,10 +20,10 @@ public class Obra {
 	private Long id;
 	
 	private String titulo;
-	@OneToOne
-	private Beacon beacon;
-	
-	private String autor;
+	private long idBeacon;
+	@JsonIgnore
+	@ManyToOne
+	private Autor autor;
 	private String estilo;
 	
 	@JsonIgnore
@@ -35,26 +34,36 @@ public class Obra {
 	@ManyToOne
 	private Coleccion coleccion;
 
-	@ManyToOne
-	private Exposicion exposicion;
-	
 	@JsonIgnore
 	@OneToMany(mappedBy = "obra",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
  	private List<MultimediaItem> multimediaItems;
 	
+	private String informacion;
 	
 	public Obra(){
 		
 	}
 	
-	public Obra(String titulo, String autor, String estilo,  Museo museo){
+	public Obra(String titulo, Autor autor, String estilo,  Museo museo){
 		this.titulo = titulo;
 		this.autor = autor;
 		this.estilo = estilo;
 		this.museo = museo;
 	}
+	public Obra (String titulo, Autor autor, String estilo,  Museo museo, Coleccion col, long beacon){
+		this(titulo,autor,estilo,museo);
+		this.coleccion = col;
+		this.idBeacon = beacon;
+
+		
+	}
 	
-	
+
+	public Obra(String titulo, Autor autor, String estilo,  Museo museo,  long beacon) {
+		this(titulo,autor,estilo,museo);
+		this.idBeacon = beacon;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -71,19 +80,19 @@ public class Obra {
 		this.titulo = titulo;
 	}
 
-	public Beacon getBeacon() {
-		return beacon;
+	public long getBeacon() {
+		return idBeacon;
 	}
 
-	public void setBeacon(Beacon beacon) {
-		this.beacon = beacon;
+	public void setBeacon(long beacon) {
+		this.idBeacon = beacon;
 	}
 
-	public String getAutor() {
+	public Autor getAutor() {
 		return autor;
 	}
 
-	public void setAutor(String autor) {
+	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
 
@@ -109,20 +118,8 @@ public class Obra {
 
 	public void setColeccion(Coleccion coleccion) {
 		this.coleccion = coleccion;
-		Exposicion e = coleccion.getExposicion();
-		if(e != null){
-			exposicion = e;
-		}
-		
 	}
 
-	public Exposicion getExposicion() {
-		return exposicion;
-	}
-
-	public void setExposicion(Exposicion exposicion) {
-		this.exposicion = exposicion;
-	}
 
 	public List<MultimediaItem> getMultimediaItems() {
 		return multimediaItems;
@@ -132,7 +129,15 @@ public class Obra {
 		this.multimediaItems = multimediaItems;
 	}
 
-	public void editar(String titulo, String autor, String estilo, Coleccion coleccion, Museo museo){
+	public String getInformacion() {
+		return informacion;
+	}
+
+	public void setInformacion(String informacion) {
+		this.informacion = informacion;
+	}
+
+	public void editar(String titulo, Autor autor, String estilo, Coleccion coleccion, Museo museo){
 		this.titulo = titulo;
 		this.autor = autor;
 		this.estilo = estilo;
@@ -146,12 +151,12 @@ public class Obra {
 	@Override
 	public boolean equals(Object u){
 		Obra obra = (Obra) u;
-		if (obra.getId() == null) return true;
-		return (obra.id == this.getId());
+		return (obra.getTitulo().equals(this.getTitulo()) && 
+				obra.getAutor().equals(this.getAutor()));
 	}
 	
 	@Override
 	public int hashCode(){
-		return id.hashCode();
+		return titulo.hashCode() + autor.hashCode();
 	}
 }

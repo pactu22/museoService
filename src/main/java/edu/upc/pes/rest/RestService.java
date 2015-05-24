@@ -1,20 +1,33 @@
-package edu.upc.pes.service;
+package edu.upc.pes.rest;
 
 import java.util.List;
 
+import edu.upc.pes.model.Autor;
+import edu.upc.pes.model.Coleccion;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
+import edu.upc.pes.model.WrapperObra;
 
 public interface RestService {
 
-	public List<Obra> allObras();
+
 	
 	public Museo nuevoMuseo(Museo museo);
 	
+	public Autor nuevoAutor(Autor autor);
+
+	public Coleccion nuevaColeccion(Coleccion col, String museo);
 	
+	public Obra nuevaObraMuseo(WrapperObra obra, String museo);
+
+	public List<Obra> allObras();
+
 	public List<Obra> obrasDeMuseo (String nombreMuseo);
 
-	public Obra nuevaObraMuseo(Obra obra, String museo);
+	public List<Coleccion> coleccionesDeMuseo(String museo);
+
+	public List<Coleccion> allColecciones();
+
 	
 	/*
 public Coleccion nuevaColeccion(String nombreColeccion, String nombreMuseo);

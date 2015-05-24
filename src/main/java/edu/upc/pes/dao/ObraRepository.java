@@ -11,8 +11,8 @@ import edu.upc.pes.model.Obra;
 public interface  ObraRepository extends JpaRepository<Obra, Long> {
 
 	public Obra findByTitulo(String titulo);
-	public Obra findByBeacon(Long beacon);
-	public List<Obra> findByAutor(String autor);
+	public Obra findByTituloAndAutor(String titulo, Long idAutor);
+	public Obra findByIdBeacon(Long beacon);
 	public List<Obra> findByMuseo(Museo museo);
 	public List<Obra> findByColeccion(Coleccion coleccion);
 	public List<Obra> findByMuseoAndColeccion(Museo museo, Coleccion coleccion);
