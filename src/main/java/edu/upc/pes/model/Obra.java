@@ -21,7 +21,6 @@ public class Obra {
 	
 	private String titulo;
 	private long idBeacon;
-	@JsonIgnore
 	@ManyToOne
 	private Autor autor;
 	private String estilo;

@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 public class JsonDateDeSerializer  extends JsonDeserializer<Date> {
 	
 	// Mejor fecha y hora
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Override
 	public Date deserialize(JsonParser jp, DeserializationContext context)

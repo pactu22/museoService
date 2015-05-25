@@ -37,6 +37,8 @@ public interface RestService {
 
 	public List<Museo> allMuseos();
 
+	public List<Autor> allAutores();
+
 	
 	/*
 public Coleccion nuevaColeccion(String nombreColeccion, String nombreMuseo);

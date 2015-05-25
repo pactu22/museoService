@@ -1,6 +1,7 @@
 package edu.upc.pes.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,11 @@ public class AutorServiceImpl implements AutorService {
 			Date fechaNacimiento, String nacionalidad) {
 
 		return autorRepo.findByNombreAndApellidosAndFechaNacimientoAndNacionalidad(nombre, apellidos, fechaNacimiento, nacionalidad);
+	}
+
+	@Override
+	public List<Autor> getAll() {
+		return autorRepo.findAll();
 	}
 
 }

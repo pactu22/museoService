@@ -86,5 +86,9 @@ public class WSRestController {
 	public List<Museo> getAllMuseos() {
 		return restService.allMuseos();
 	}
+	@RequestMapping(value = RestUrisConstants.AUTORES, method = RequestMethod.GET)
+	public List<Autor> getAllAutores() {
+		return restService.allAutores();
+	}
      
 }

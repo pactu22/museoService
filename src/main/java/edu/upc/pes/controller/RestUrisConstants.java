@@ -26,4 +26,6 @@ public class RestUrisConstants {
 	
 	public static final String MUSEOS = "/museos";
 	
+	public static final String AUTORES = "/autores";
+	
 }
