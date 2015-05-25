@@ -69,6 +69,11 @@ public class MuseoServiceImpl implements MuseoService {
 		if(mus != null)return mus.getColecciones();
 		return null;
 	}
+	@Override
+	public List<Museo> allMuseos() {
+		
+		return museoRepository.findAll();
+	}
 
 	
 	

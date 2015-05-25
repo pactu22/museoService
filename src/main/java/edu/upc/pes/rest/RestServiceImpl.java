@@ -290,5 +290,11 @@ public UsuarioRegistrado editarVisitante(String email, String nombre,
 		return usuarioService.getAllUsuariosRegistrados();
 	}
 
+	@Override
+	public List<Museo> allMuseos() {
+		
+		return museoService.allMuseos();
+	}
+
 
 }

@@ -35,6 +35,8 @@ public interface RestService {
 
 	public List<UsuarioRegistrado> allUsuarios();
 
+	public List<Museo> allMuseos();
+
 	
 	/*
 public Coleccion nuevaColeccion(String nombreColeccion, String nombreMuseo);

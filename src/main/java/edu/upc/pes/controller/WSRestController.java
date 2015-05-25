@@ -55,7 +55,6 @@ public class WSRestController {
 	
 	@RequestMapping(value = RestUrisConstants.EDITAR_OBRA_OF_MUSEO, method = RequestMethod.PUT)
 	public Obra editarObra(@RequestBody WrapperObra obra, @PathVariable("museo") String museo, @PathVariable("id") Long idObra) {
-		//TODO MODIFICAR OBRA DE MSEO
 		return restService.editarObraMuseo(obra,museo, idObra);
 	}
 	@RequestMapping(value = RestUrisConstants.BORRAR_OBRA_OF_MUSEO, method = RequestMethod.POST)
@@ -79,8 +78,13 @@ public class WSRestController {
 	}
 	
 	@RequestMapping(value = RestUrisConstants.USUARIOS, method = RequestMethod.GET)
-	public List<UsuarioRegistrado> getAlUsers() {
+	public List<UsuarioRegistrado> getAllUsers() {
 		return restService.allUsuarios();
+	}
+	
+	@RequestMapping(value = RestUrisConstants.MUSEOS, method = RequestMethod.GET)
+	public List<Museo> getAllMuseos() {
+		return restService.allMuseos();
 	}
      
 }

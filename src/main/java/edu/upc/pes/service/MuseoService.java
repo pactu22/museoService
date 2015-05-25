@@ -17,6 +17,7 @@ public interface MuseoService {
 	public List<Visitante> getAllVisitantes(Museo museo);
 	public Museo persist(Museo museo);
 	public List<Coleccion> allColecciones(String museo);
+	public List<Museo> allMuseos();
 	
 	
 }
