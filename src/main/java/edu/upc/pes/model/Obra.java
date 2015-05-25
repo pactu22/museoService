@@ -26,11 +26,9 @@ public class Obra {
 	private Autor autor;
 	private String estilo;
 	
-	@JsonIgnore
 	@ManyToOne
 	private Museo museo;
 	
-	@JsonIgnore
 	@ManyToOne
 	private Coleccion coleccion;
 
