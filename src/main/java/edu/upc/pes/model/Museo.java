@@ -114,4 +114,10 @@ public class Museo {
 		obras.add(indice, nueva);
 		
 	}
+	public Obra getObra(Long idObra) {
+		for(Obra o: obras){
+			if (o.getId() == idObra) return o;
+		}
+		return null;
+	}
 }

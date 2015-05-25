@@ -90,5 +90,9 @@ public class WSRestController {
 	public List<Autor> getAllAutores() {
 		return restService.allAutores();
 	}
+	@RequestMapping(value = RestUrisConstants.OBRA_OF_MUSEO, method = RequestMethod.GET)
+	public Obra getObraOfMuseo(@PathVariable("museo") String museo, @PathVariable("id") Long idObra) {
+		return restService.getObraOfMuseo(museo, idObra);
+	}
      
 }

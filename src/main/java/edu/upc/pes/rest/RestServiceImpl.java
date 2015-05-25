@@ -301,5 +301,12 @@ public UsuarioRegistrado editarVisitante(String email, String nombre,
 		return autorService.getAll();
 	}
 
+	@Override
+	public Obra getObraOfMuseo(String museo, Long idObra) {
+		Museo museo2 = museoService.findByNombre(museo);
+		return museo2.getObra(idObra);
+		
+	}
+
 
 }

@@ -39,6 +39,8 @@ public interface RestService {
 
 	public List<Autor> allAutores();
 
+	public Obra getObraOfMuseo(String museo, Long idObra);
+
 	
 	/*
 public Coleccion nuevaColeccion(String nombreColeccion, String nombreMuseo);

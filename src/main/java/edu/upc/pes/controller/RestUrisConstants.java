@@ -28,4 +28,5 @@ public class RestUrisConstants {
 	
 	public static final String AUTORES = "/autores";
 	
+	public static final String OBRA_OF_MUSEO = "/museos/{museo}/obras/{id}";
 }
