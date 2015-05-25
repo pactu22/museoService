@@ -64,30 +64,34 @@ public class RestServiceImpl implements RestService {
 			Autor autor = autorService.getAtutor(obra.getIdAutor());
 			if(autor != null){
 				Obra o =  new Obra(obra.getTitulo(), autor, obra.getEstilo(), museo, obra.getIdBeacon());
-				Coleccion coleccion = null;
-				//recibo coleccion
-				if(obra.getNombreColeccion() != null) {
-					coleccion = coleccionService.getColeccion(obra.getNombreColeccion());
-					if (coleccion != null && !coleccion.tieneObra(o)){
-						if(museo.tieneColeccion(coleccion) && !museo.tieneObra(o)){
-							o.setColeccion(coleccion);
-							o.setInformacion(obra.getInformacion());
-							museo.addObra(o);
-							coleccion.addObra(o);
-							return obraService.newObra(o);
+				if(!autor.tieneObra(o)){
+					Coleccion coleccion = null;
+					//recibo coleccion
+					if(obra.getNombreColeccion() != null) {
+						coleccion = coleccionService.getColeccion(obra.getNombreColeccion());
+						//if (coleccion != null && !coleccion.tieneObra(o)){
+							//if(museo.tieneColeccion(coleccion) && !museo.tieneObra(o)){
+						if (!coleccion.tieneObra(o)){
+							if( !museo.tieneObra(o)){
+								o.setColeccion(coleccion);
+								o.setInformacion(obra.getInformacion());
+								museo.addObra(o);
+								coleccion.addObra(o);
+								return obraService.newObra(o);
+							}
+							System.out.println("ERROR: coleccion no pertenece a museo o Museo ya tiene esa obra");
+							//ERROR: coleccion no pertenece a museo o Museo ya tiene esa obra
+							return null;
 						}
-						System.out.println("ERROR: coleccion no pertenece a museo o Museo ya tiene esa obra");
-						//ERROR: coleccion no pertenece a museo o Museo ya tiene esa obra
+						System.out.println("ERROR: coleccion no existe o ya tiene esa obra");
+						//coleccion no existe o ya tiene esa obra
 						return null;
 					}
-					System.out.println("ERROR: coleccion no existe o ya tiene esa obra");
-					//coleccion no existe o ya tiene esa obra
-					return null;
+					o.setInformacion(obra.getInformacion());
+					museo.addObra(o);
+					return obraService.newObra(o);
 				}
-				o.setInformacion(obra.getInformacion());
-				museo.addObra(o);
-				return obraService.newObra(o);
-				
+				return null;
 			}
 			System.out.println("Autor no existe");
 			return null;

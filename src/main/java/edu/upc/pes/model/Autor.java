@@ -91,6 +91,10 @@ public class Autor{
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
+	public boolean tieneObra(Obra o){
+		return obras.contains(o);
+	}
+	
 	@Override
 	public boolean equals(Object u){
 		Autor autor = (Autor) u;
