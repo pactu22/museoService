@@ -6,6 +6,7 @@ import edu.upc.pes.model.Autor;
 import edu.upc.pes.model.Coleccion;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
+import edu.upc.pes.model.UsuarioRegistrado;
 import edu.upc.pes.model.WrapperObra;
 
 public interface RestService {
@@ -31,6 +32,8 @@ public interface RestService {
 	public Obra editarObraMuseo(WrapperObra obra, String museo, Long idObra);
 
 	public List<Obra> borrarObraMuseo(Long idObra, String museo);
+
+	public List<UsuarioRegistrado> allUsuarios();
 
 	
 	/*

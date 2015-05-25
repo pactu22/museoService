@@ -13,6 +13,7 @@ import edu.upc.pes.model.Autor;
 import edu.upc.pes.model.Coleccion;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
+import edu.upc.pes.model.UsuarioRegistrado;
 import edu.upc.pes.model.WrapperObra;
 import edu.upc.pes.rest.RestService;
 
@@ -77,5 +78,9 @@ public class WSRestController {
 		return restService.allColecciones();
 	}
 	
+	@RequestMapping(value = RestUrisConstants.USUARIOS, method = RequestMethod.GET)
+	public List<UsuarioRegistrado> getAlUsers() {
+		return restService.allUsuarios();
+	}
      
 }

@@ -9,6 +9,7 @@ import edu.upc.pes.model.Autor;
 import edu.upc.pes.model.Coleccion;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
+import edu.upc.pes.model.UsuarioRegistrado;
 import edu.upc.pes.model.WrapperObra;
 import edu.upc.pes.service.AutorService;
 import edu.upc.pes.service.ColeccionService;
@@ -281,6 +282,12 @@ public UsuarioRegistrado editarVisitante(String email, String nombre,
 		mus.borrarObra(o);
 		obraService.borrarObra(o);
 		return mus.getObras();
+	}
+
+	@Override
+	public List<UsuarioRegistrado> allUsuarios() {
+		
+		return usuarioService.getAllUsuariosRegistrados();
 	}
 
 
