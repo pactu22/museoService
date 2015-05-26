@@ -16,8 +16,12 @@ public interface ObraService {
 	public void borrarObra(Obra idObra);
 	//public Obra editarObra(Obra idObra, String titulo, Autor autor, String estilo, Museo museo);
 	
-	public List<Obra> findByMuseoAndColeccion( Museo museo,Coleccion coleccion);
 	public Obra updateObra(Long idObra, Autor autor, Long beacon,
 			String estilo, String info, String titulo, Coleccion colWrapper);
+	public List<Obra> findByMuseoAndTitulo(Museo mus, String titulo);
+	public List<Obra> findByMuseoAndColeccion( Museo museo,Coleccion coleccion);
+	public List<Obra> findByMuseoAndEstilo(Museo mus, String estilo);
+	
+	
 	
 }

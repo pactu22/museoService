@@ -318,5 +318,31 @@ public UsuarioRegistrado editarVisitante(String email, String nombre,
 		
 	}
 
+	@Override
+	public List<Obra> getObraOfMuseoByColeccion(String museo, String coleccion) {
+		Coleccion col = coleccionService.getColeccion(coleccion);
+		Museo mus = museoService.findByNombre(museo);
+		return obraService.findByMuseoAndColeccion(mus, col);
+	}
+
+	@Override
+	public List<Obra> getObraOfMuseoByTitulo(String museo, String titulo) {
+		Museo mus = museoService.findByNombre(museo);
+		return obraService.findByMuseoAndTitulo(mus,titulo);
+	}
+
+	@Override
+	public List<Obra> getObraOfMuseoByEstilo(String museo, String estilo) {
+		Museo mus = museoService.findByNombre(museo);
+		return obraService.findByMuseoAndEstilo(mus,estilo);
+	}
+
+	@Override
+	public List<Obra> getObraOfMuseoByAutor(String museo, String autor) {
+		Museo mus = museoService.findByNombre(museo);
+		//TODO
+		return null;
+	}
+
 
 }

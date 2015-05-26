@@ -29,4 +29,13 @@ public class RestUrisConstants {
 	public static final String AUTORES = "/autores";
 	
 	public static final String OBRA_OF_MUSEO = "/museos/{museo}/obras/{id}";
+	
+	
+	
+	
+	public static final String GET_OBRAS_OF_MUSEO_BY_COLECCION = "/museos/{museo}/coleccion/{coleccion}/obras";
+	public static final String GET_OBRAS_OF_MUSEO_BY_TITULO = "/museos/{museo}/obrasbytitulo/{titulo}";
+	public static final String GET_OBRAS_OF_MUSEO_BY_ESTILO = "/museos/{museo}/obrasbyestilo/{estilo}";
+	public static final String GET_OBRAS_OF_MUSEO_BY_AUTOR = "/museos/{museo}/obrasbyautor/{nombreAutor}";
+	
 }

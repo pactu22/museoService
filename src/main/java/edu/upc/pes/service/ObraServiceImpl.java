@@ -80,4 +80,20 @@ public class ObraServiceImpl implements ObraService {
 		o.setColeccion(colWrapper);
 		return obraRepository.save(o);
 	}
+
+
+
+	@Override
+	public List<Obra> findByMuseoAndTitulo(Museo mus, String titulo) {
+		
+		return obraRepository.findByMuseoAndTitulo(mus, titulo);
+	}
+
+
+
+	@Override
+	public List<Obra> findByMuseoAndEstilo(Museo mus, String estilo) {
+		// TODO Auto-generated method stub
+		return obraRepository.findByMuseoAndEstilo(mus, estilo);
+	}
 }

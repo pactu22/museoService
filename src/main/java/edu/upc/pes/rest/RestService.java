@@ -41,6 +41,14 @@ public interface RestService {
 
 	public Obra getObraOfMuseo(String museo, Long idObra);
 
+	public List<Obra> getObraOfMuseoByColeccion(String museo, String coleccion);
+
+	public List<Obra> getObraOfMuseoByTitulo(String museo, String titulo);
+
+	public List<Obra> getObraOfMuseoByEstilo(String museo, String estilo);
+
+	public List<Obra> getObraOfMuseoByAutor(String museo, String autor);
+
 	
 	/*
 public Coleccion nuevaColeccion(String nombreColeccion, String nombreMuseo);

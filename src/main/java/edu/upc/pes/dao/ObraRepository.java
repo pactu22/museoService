@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import edu.upc.pes.model.Autor;
 import edu.upc.pes.model.Coleccion;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
@@ -15,5 +16,10 @@ public interface  ObraRepository extends JpaRepository<Obra, Long> {
 	public Obra findByIdBeacon(Long beacon);
 	public List<Obra> findByMuseo(Museo museo);
 	public List<Obra> findByColeccion(Coleccion coleccion);
+	
+	
 	public List<Obra> findByMuseoAndColeccion(Museo museo, Coleccion coleccion);
+	public List<Obra> findByMuseoAndEstilo(Museo museo, String estilo);
+	public List<Obra> findByMuseoAndAutor(Museo museo, Autor Autor);
+	public List<Obra> findByMuseoAndTitulo(Museo museo, String titulo);
 }

@@ -95,4 +95,27 @@ public class WSRestController {
 		return restService.getObraOfMuseo(museo, idObra);
 	}
      
+	@RequestMapping(value = RestUrisConstants.GET_OBRAS_OF_MUSEO_BY_COLECCION , method = RequestMethod.GET)
+	public List<Obra> getObraOfMuseoByColeccion(@PathVariable("museo") String museo, @PathVariable("coleccion") String coleccion) {
+		return restService.getObraOfMuseoByColeccion(museo, coleccion);
+	}
+	
+	@RequestMapping(value = RestUrisConstants.GET_OBRAS_OF_MUSEO_BY_TITULO , method = RequestMethod.GET)
+	public List<Obra> getObraOfMuseoByTitulo(@PathVariable("museo") String museo, @PathVariable("titulo") String titulo) {
+		System.out.println("TITULO");
+		return restService.getObraOfMuseoByTitulo(museo, titulo);
+	}
+	
+	@RequestMapping(value = RestUrisConstants.GET_OBRAS_OF_MUSEO_BY_ESTILO , method = RequestMethod.GET)
+	public List<Obra> getObraOfMuseoByEstilo(@PathVariable("museo") String museo, @PathVariable("estilo") String estilo) {
+		System.out.println("ESTILO");
+		return restService.getObraOfMuseoByEstilo(museo, estilo);
+	}
+	@RequestMapping(value = RestUrisConstants.GET_OBRAS_OF_MUSEO_BY_AUTOR , method = RequestMethod.GET)
+	public List<Obra> getObraOfMuseoByAutor(@PathVariable("museo") String museo, @PathVariable("nombreAutor") String autor) {
+		System.out.println("AUTOR");
+		return restService.getObraOfMuseoByAutor(museo, autor);
+	}
+	
+	
 }
