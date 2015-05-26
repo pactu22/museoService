@@ -68,6 +68,11 @@ public class Coleccion {
 	public boolean tieneObra(Obra o){
 		return obras.contains(o);
 	}
+	
+	public void editarObra(int indice, Obra o){
+		obras.remove(indice);
+		obras.add(indice, o);
+	}
 	@Override
 	public boolean equals(Object u){
 		Coleccion col= (Coleccion) u;

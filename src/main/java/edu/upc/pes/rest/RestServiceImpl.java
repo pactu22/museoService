@@ -253,38 +253,44 @@ public UsuarioRegistrado editarVisitante(String email, String nombre,
 */
 
 	@Override
-	public Obra editarObraMuseo(WrapperObra obra, String museo, Long idObra) {
-		Obra obraAntigua = obraService.getObra(idObra);
+	public Obra editarObraMuseo(WrapperObra wrapper, String museo, Long idObra) {
+		
 		Museo mus = museoService.findByNombre(museo);
-		Coleccion antigua = obraAntigua.getColeccion();
-		Obra obraNueva = obraService.getObra(idObra);
-		Coleccion col = null;
-		if(obra.getNombreColeccion() != null){
-			if(antigua != null ) antigua.borrarObra(obraAntigua);
-			col = coleccionService.getColeccion(obra.getNombreColeccion());
-			obraNueva.setColeccion(col);		
-
+		Obra obraAEditar = obraService.getObra(idObra);
+		int indice = mus.getIndiceObra(obraAEditar);
+		if(obraAEditar.getColeccion() != null){
+			//si mi obra tenia una coleccion la borro
+			Coleccion col = obraAEditar.getColeccion();
+			col.borrarObra(obraAEditar);
+			
 		}
-		else obraNueva.setColeccion(null);
-		
-		Autor autor = autorService.getAtutor(obra.getIdAutor());
-		
-		obraNueva.setTitulo(obra.getTitulo());
-		obraNueva.setAutor(autor);
-		obraNueva.setEstilo(obra.getEstilo());
-		obraNueva.setInformacion(obra.getInformacion());
-		obraNueva.setBeacon(obra.getIdBeacon());
-		if(col != null) col.addObra(obraNueva);		
-		mus.editarObra(obraAntigua,obraNueva);
-		return obraService.newObra(obraNueva);
+		Autor autor = autorService.getAtutor(wrapper.getIdAutor());
+		Long beacon = wrapper.getIdBeacon();
+		String estilo = wrapper.getEstilo();
+		String info =wrapper.getInformacion();
+		String titulo = wrapper.getTitulo();
+	
+		Coleccion colWrapper = null;
+		if( wrapper.getNombreColeccion() != null){
+			colWrapper = coleccionService.getColeccion(wrapper.getNombreColeccion());
+			colWrapper.addObra(obraAEditar);
+			
+		}		
+
+		mus.editarObra(indice, autor, beacon, estilo, info, titulo, colWrapper);
+		return obraService.updateObra(idObra, autor, beacon, estilo, info, titulo, colWrapper);
 	}
 
 	@Override
 	public List<Obra> borrarObraMuseo(Long idObra, String museo) {
 		Museo mus = museoService.findByNombre(museo);
+		System.out.println("ANTES DE BORRAR; " + mus.getObras().size());
 		Obra o = obraService.getObra(idObra);
 		mus.borrarObra(o);
+		Coleccion col = o.getColeccion() ;
+		if(col != null) col.borrarObra(o);
 		obraService.borrarObra(o);
+		System.out.println("DP DE BORRAR; " + mus.getObras().size());
 		return mus.getObras();
 	}
 

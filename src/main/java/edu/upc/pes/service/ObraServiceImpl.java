@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.upc.pes.dao.MuseoRepository;
 import edu.upc.pes.dao.ObraRepository;
+import edu.upc.pes.model.Autor;
 import edu.upc.pes.model.Coleccion;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
@@ -53,6 +54,7 @@ public class ObraServiceImpl implements ObraService {
 
 	@Override
 	public Obra getObraByTituloAndAutor(String titulo, Long idAutor) {
+		
 		return obraRepository.findByTituloAndAutor(titulo, idAutor);
 	}
 
@@ -63,5 +65,19 @@ public class ObraServiceImpl implements ObraService {
 	public List<Obra> findByMuseoAndColeccion(Museo museo, Coleccion coleccion) {
 
 		return obraRepository.findByMuseoAndColeccion(museo, coleccion);
+	}
+	
+
+	@Override
+	public Obra updateObra(Long idObra, Autor autor, Long beacon,
+			String estilo, String info, String titulo, Coleccion colWrapper) {
+		Obra o = obraRepository.findOne(idObra);
+		o.setAutor(autor);
+		o.setBeacon(beacon);
+		o.setEstilo(estilo);
+		o.setInformacion(info);
+		o.setTitulo(titulo);
+		o.setColeccion(colWrapper);
+		return obraRepository.save(o);
 	}
 }

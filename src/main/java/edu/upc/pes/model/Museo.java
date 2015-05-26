@@ -108,16 +108,31 @@ public class Museo {
 
 		return colecciones.contains(c);
 	}
-	public void editarObra(Obra antigua, Obra nueva) {
-		int indice = obras.indexOf(antigua);
-		obras.remove(indice);
-		obras.add(indice, nueva);
+	public void editarObra(int idAntigua, Obra nueva) {
+		obras.remove(idAntigua);
+		obras.add(idAntigua, nueva);
 		
 	}
+	public int getIndiceObra(Obra o){
+		return obras.indexOf(o);
+	}
 	public Obra getObra(Long idObra) {
+		
 		for(Obra o: obras){
 			if (o.getId() == idObra) return o;
 		}
 		return null;
 	}
+	public void editarObra(int indice, Autor autor, Long beacon, String estilo,
+			String info, String titulo, Coleccion colWrapper) {
+		Obra o = obras.get(indice);
+		o.setAutor(autor);
+		o.setBeacon(beacon);
+		o.setEstilo(estilo);
+		o.setInformacion(info);
+		o.setTitulo(titulo);
+		o.setColeccion(colWrapper);
+		obras.set(indice, o);
+	}
+	
 }
