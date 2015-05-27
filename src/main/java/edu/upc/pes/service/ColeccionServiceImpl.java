@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.upc.pes.dao.ColeccionRepository;
 import edu.upc.pes.model.Coleccion;
+import edu.upc.pes.model.Museo;
 @Service
 public class ColeccionServiceImpl implements ColeccionService{
 
@@ -26,6 +27,12 @@ public class ColeccionServiceImpl implements ColeccionService{
 	@Override
 	public List<Coleccion> allColecciones() {
 		return coleccionRepo.findAll();
+	}
+
+	@Override
+	public List<Coleccion> allColecciones(Museo museo) {
+		// TODO Auto-generated method stub
+		return coleccionRepo.findByMuseo(museo);
 	}
 	
 }

@@ -36,7 +36,7 @@ public class WSRestController {
 	}
 	
 	@RequestMapping(value = RestUrisConstants.NEW_COLECCION, method = RequestMethod.POST)
-	public Coleccion nuevoColeccion(@RequestBody Coleccion coleccion, @PathVariable("museo") String museo) {
+	public Coleccion nuevaColeccion(@RequestBody Coleccion coleccion, @PathVariable("museo") String museo) {
 		return restService.nuevaColeccion(coleccion, museo);
 	}
 	

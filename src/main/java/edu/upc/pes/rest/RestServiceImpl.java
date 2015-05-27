@@ -112,8 +112,10 @@ public class RestServiceImpl implements RestService {
 	@Override
 	public Coleccion nuevaColeccion(Coleccion col, String nombreMuseo) {
 		Museo museo = museoService.findByNombre(nombreMuseo);
+		
 		if(museo != null){
 			if(!museo.tieneColeccion(col)){
+				System.out.println("NO TIENE COLECCCIOM");
 				col.setMuseo(museo);
 				museo.addColeccion(col);
 				return coleccionService.nuevaColeccion(col);
@@ -125,7 +127,8 @@ public class RestServiceImpl implements RestService {
 
 	@Override
 	public List<Coleccion> coleccionesDeMuseo(String nombreMuseo) {
-			return museoService.allColecciones(nombreMuseo);
+			Museo museo = museoService.findByNombre(nombreMuseo);
+			return coleccionService.allColecciones(museo);
 
 	}
 	

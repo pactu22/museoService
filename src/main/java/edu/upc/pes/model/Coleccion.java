@@ -76,7 +76,7 @@ public class Coleccion {
 	@Override
 	public boolean equals(Object u){
 		Coleccion col= (Coleccion) u;
-		return (col.getNombre() == this.nombre);
+		return (col.getNombre().equals(this.nombre));
 	}
 	
 	@Override

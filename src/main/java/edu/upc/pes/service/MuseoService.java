@@ -2,7 +2,6 @@ package edu.upc.pes.service;
 
 import java.util.List;
 
-import edu.upc.pes.model.Coleccion;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
 import edu.upc.pes.model.Visitante;
@@ -16,7 +15,6 @@ public interface MuseoService {
 	public void borrarObra(Obra obra);
 	public List<Visitante> getAllVisitantes(Museo museo);
 	public Museo persist(Museo museo);
-	public List<Coleccion> allColecciones(String museo);
 	public List<Museo> allMuseos();
 	
 	
