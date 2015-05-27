@@ -20,13 +20,13 @@
             <value>org.postgresql.Driver</value>
         </property>
         <property name="url">
-            <value>jdbc:postgresql://localhost:5432/pes</value>
+            <value>jdbc:postgresql://ec2-50-19-233-111.compute-1.amazonaws.com:5432/d9p5m8bp3uvlre</value>
         </property>
         <property name="username">
-            <value>postgres</value>
+            <value>lqdhqpytsuobrf</value>
         </property>
         <property name="password">
-            <value>Asterion</value>
+            <value>gHBT1EpaQNxxDN-Sn0c6YnW9fK</value>
         </property>
     </bean>
  
