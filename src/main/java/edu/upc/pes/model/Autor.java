@@ -110,4 +110,11 @@ public class Autor{
 		return nombre.hashCode() + apellidos.hashCode() + fechaNacimiento.hashCode() + nacionalidad.hashCode();
 	}
 
+	public List<Obra> obrasDelMuseo(String museo){
+		List<Obra>result = new ArrayList<Obra>();
+		for(Obra o  : obras) {
+			if (o.getMuseo().getNombre().equals(museo)) result.add(o);
+		}
+		return result;
+	}
 }

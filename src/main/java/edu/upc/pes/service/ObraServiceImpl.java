@@ -1,10 +1,12 @@
 package edu.upc.pes.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.upc.pes.dao.AutorRepository;
 import edu.upc.pes.dao.MuseoRepository;
 import edu.upc.pes.dao.ObraRepository;
 import edu.upc.pes.model.Autor;
@@ -21,7 +23,8 @@ public class ObraServiceImpl implements ObraService {
 	
 	@Autowired
 	private MuseoRepository museoRepository;
-	
+	@Autowired
+	private AutorRepository autorRepository;
 	
 
 	@Override
@@ -93,7 +96,41 @@ public class ObraServiceImpl implements ObraService {
 
 	@Override
 	public List<Obra> findByMuseoAndEstilo(Museo mus, String estilo) {
-		// TODO Auto-generated method stub
 		return obraRepository.findByMuseoAndEstilo(mus, estilo);
+	}
+	
+	
+	@Override
+	public List<Obra> findByMuseoAndNombreAutor(Museo mus, String nombreAutor) {
+		List<Autor>autores = autorRepository.findByNombre(nombreAutor);
+		List<Obra> obras = new ArrayList<Obra>();
+		for(Autor autor: autores){
+			obras.addAll(autor.obrasDelMuseo(mus.getNombre()));
+		}
+		return obras;
+		
+	}
+	@Override
+	public List<Obra> findByMuseoAndApellidosAutor(Museo mus, String apellidosAutor) {
+		List<Autor>autores = autorRepository.findByApellidos(apellidosAutor);
+		List<Obra> obras = new ArrayList<Obra>();
+		for(Autor autor: autores){
+			obras.addAll(autor.obrasDelMuseo(mus.getNombre()));
+		}
+		return obras;
+	}
+	@Override
+	public List<Obra> findByMuseoAndNombreYApellidosAutor(Museo mus, String nombreYApellidosAutor) {
+		return null;
+	}
+
+
+
+	@Override
+	public List<Obra> findObrasDeAutor(Museo mus, String autor) {
+		List<Obra> obras = new ArrayList<Obra>();
+		obras.addAll(findByMuseoAndApellidosAutor(mus,autor));
+		obras.addAll(findByMuseoAndNombreAutor(mus,autor));
+		return obras;
 	}
 }

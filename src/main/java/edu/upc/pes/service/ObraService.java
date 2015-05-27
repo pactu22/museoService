@@ -21,6 +21,12 @@ public interface ObraService {
 	public List<Obra> findByMuseoAndTitulo(Museo mus, String titulo);
 	public List<Obra> findByMuseoAndColeccion( Museo museo,Coleccion coleccion);
 	public List<Obra> findByMuseoAndEstilo(Museo mus, String estilo);
+	public List<Obra> findByMuseoAndNombreAutor(Museo mus, String nombreAutor);
+	public List<Obra> findByMuseoAndApellidosAutor(Museo mus, String apellidosAutor);
+	//TODO
+	public List<Obra> findByMuseoAndNombreYApellidosAutor(Museo mus,
+			String nombreYApellidosAutor);
+	public List<Obra> findObrasDeAutor(Museo mus, String autor);
 	
 	
 	

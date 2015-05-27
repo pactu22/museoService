@@ -73,11 +73,14 @@ public class RestServiceImpl implements RestService {
 							//if(museo.tieneColeccion(coleccion) && !museo.tieneObra(o)){
 						if (!coleccion.tieneObra(o)){
 							if( !museo.tieneObra(o)){
+								System.out.println("TAMAÑNO ANTES:" + museoService.getAllObrasMuseo(museo).size());
 								o.setColeccion(coleccion);
 								o.setInformacion(obra.getInformacion());
 								museo.addObra(o);
 								coleccion.addObra(o);
-								return obraService.newObra(o);
+								Obra obraNueva = obraService.newObra(o);
+							System.out.println("TAMAÑNO ANTES:" + museoService.getAllObrasMuseo(museo).size());
+								return obraNueva;
 							}
 							System.out.println("ERROR: coleccion no pertenece a museo o Museo ya tiene esa obra");
 							//ERROR: coleccion no pertenece a museo o Museo ya tiene esa obra
@@ -340,8 +343,7 @@ public UsuarioRegistrado editarVisitante(String email, String nombre,
 	@Override
 	public List<Obra> getObraOfMuseoByAutor(String museo, String autor) {
 		Museo mus = museoService.findByNombre(museo);
-		//TODO
-		return null;
+		return obraService.findObrasDeAutor(mus, autor);
 	}
 
 
