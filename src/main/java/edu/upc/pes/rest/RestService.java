@@ -50,29 +50,4 @@ public interface RestService {
 	public List<Obra> getObraOfMuseoByAutor(String museo, String autor);
 
 	
-	/*
-public Coleccion nuevaColeccion(String nombreColeccion, String nombreMuseo);
-	
-	public Obra nuevaObra(String titulo, String autor, String estilo,  String nombreMuseo);
-	
-	public void eliminarObra(Long idObra);
-	
-	public Obra editarObra(Long idObra, String titulo, String autor, String estilo,  String nombreMuseo);
-	
-	public List<Obra> obrasDeMuseoYColeccion (String nombreMuseo, String nombreColeccion);
-	
-	public UsuarioRegistrado nuevoUsuarioRegistrado(String email, String contraseña);
-	
-	public UsuarioRegistrado nuevoVisitante(String email, String contraseña, Museo museo);
-	
-	public List<UsuarioRegistrado> allUsuariosRegistrados();
-	
-	public List<Visitante> allVisitantes();
-	
-	public List<Visitante> allVisitantesOfMuseo(String museo);
-	
-	public UsuarioRegistrado editarUsuario(String email, String nombre, String apellidos, String contraseña);
-	
-	public UsuarioRegistrado editarVisitante(String email, String nombre, String apellidos, String contraseña, String nombreMuseo);
-	*/
 }

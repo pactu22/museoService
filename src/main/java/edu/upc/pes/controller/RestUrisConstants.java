@@ -31,7 +31,7 @@ public class RestUrisConstants {
 	public static final String OBRA_OF_MUSEO = "/museos/{museo}/obras/{id}";
 	
 	
-	
+	public static final String AUTORES_AND_COLECCIONES = "/museos/{museo}/autoresycolecciones";
 	
 	public static final String GET_OBRAS_OF_MUSEO_BY_COLECCION = "/museos/{museo}/colecciones/{coleccion}/obras";
 	public static final String GET_OBRAS_OF_MUSEO_BY_TITULO = "/museos/{museo}/obrasbytitulo/{titulo}";

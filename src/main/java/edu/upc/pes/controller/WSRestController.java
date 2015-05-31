@@ -14,6 +14,7 @@ import edu.upc.pes.model.Coleccion;
 import edu.upc.pes.model.Museo;
 import edu.upc.pes.model.Obra;
 import edu.upc.pes.model.UsuarioRegistrado;
+import edu.upc.pes.model.WrapperAutorColeccion;
 import edu.upc.pes.model.WrapperObra;
 import edu.upc.pes.rest.RestService;
 
@@ -117,5 +118,15 @@ public class WSRestController {
 		return restService.getObraOfMuseoByAutor(museo, autor);
 	}
 	
+	@RequestMapping(value=RestUrisConstants.AUTORES_AND_COLECCIONES, method = RequestMethod.GET )
+	public WrapperAutorColeccion getObrasAndColecciones(@PathVariable("museo") String museo) {
+		WrapperAutorColeccion result = new WrapperAutorColeccion();
+		List<Autor> autores = restService.allAutores();
+		List<Coleccion> colecciones = restService.coleccionesDeMuseo(museo);
+		result.setAutores(autores);
+		result.setColecciones(colecciones);
+		return result;
+		
+	}
 	
 }
