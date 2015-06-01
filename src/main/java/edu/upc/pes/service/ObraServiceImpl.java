@@ -124,13 +124,4 @@ public class ObraServiceImpl implements ObraService {
 		return null;
 	}
 
-
-
-	@Override
-	public List<Obra> findObrasDeAutor(Museo mus, String autor) {
-		List<Obra> obras = new ArrayList<Obra>();
-		obras.addAll(findByMuseoAndApellidosAutor(mus,autor));
-		obras.addAll(findByMuseoAndNombreAutor(mus,autor));
-		return obras;
-	}
 }

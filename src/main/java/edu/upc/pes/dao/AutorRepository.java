@@ -12,4 +12,5 @@ public interface AutorRepository  extends JpaRepository<Autor, Long> {
 	public List<Autor> findByNombreAndApellidos(String nombre, String apellidos);
 	public List<Autor> findByNombre(String nombre);
 	public List<Autor> findByApellidos(String apellidos);
+
 }

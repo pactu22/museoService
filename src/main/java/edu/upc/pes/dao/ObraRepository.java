@@ -20,6 +20,6 @@ public interface  ObraRepository extends JpaRepository<Obra, Long> {
 	
 	public List<Obra> findByMuseoAndColeccion(Museo museo, Coleccion coleccion);
 	public List<Obra> findByMuseoAndEstilo(Museo museo, String estilo);
-	public List<Obra> findByMuseoAndAutor(Museo museo, Autor Autor);
+	public List<Obra> findByMuseoAndAutor(Museo museo, Autor autor);
 	public List<Obra> findByMuseoAndTitulo(Museo museo, String titulo);
 }

@@ -26,7 +26,6 @@ public interface ObraService {
 	//TODO
 	public List<Obra> findByMuseoAndNombreYApellidosAutor(Museo mus,
 			String nombreYApellidosAutor);
-	public List<Obra> findObrasDeAutor(Museo mus, String autor);
 	
 	
 	

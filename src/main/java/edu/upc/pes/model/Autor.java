@@ -28,6 +28,8 @@ public class Autor{
 	private String nombre;
 	private String apellidos;
 	
+	@JsonIgnore
+	private String nombreYApellidos;
 	
 	private Date fechaNacimiento;
 	
@@ -45,6 +47,8 @@ public class Autor{
 		this.apellidos = apellidos;
 		obras = new ArrayList<Obra>();
 		this.nacionalidad = nacionalidad;
+		nombreYApellidos = nombre.toLowerCase().concat(" ").concat(apellidos.toLowerCase());
+		System.out.println("NOMBRES: " + nombreYApellidos);
 	}
 	public Long getId() {
 		return id;
@@ -90,6 +94,12 @@ public class Autor{
 	}
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
+	}
+	public String getNombreYApellidos() {
+		return nombreYApellidos;
+	}
+	public void setNombreYApellidos(String nombreYApellidos) {
+		this.nombreYApellidos = nombreYApellidos;
 	}
 	public boolean tieneObra(Obra o){
 		return obras.contains(o);

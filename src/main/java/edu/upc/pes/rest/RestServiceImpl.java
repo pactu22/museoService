@@ -346,7 +346,9 @@ public UsuarioRegistrado editarVisitante(String email, String nombre,
 	@Override
 	public List<Obra> getObraOfMuseoByAutor(String museo, String autor) {
 		Museo mus = museoService.findByNombre(museo);
-		return obraService.findObrasDeAutor(mus, autor);
+		List<Obra>obras = autorService.getObrasByAutorAndMuseo(autor, mus);
+		
+		return obras;
 	}
 
 

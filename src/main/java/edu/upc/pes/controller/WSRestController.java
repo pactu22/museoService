@@ -32,7 +32,7 @@ public class WSRestController {
 	
 	@RequestMapping(value = RestUrisConstants.NEW_AUTOR, method = RequestMethod.POST)
 	public Autor nuevoAutor(@RequestBody Autor autor) {
-		//autor.setFechaNacimiento(new Date());
+		autor.setNombreYApellidos(autor.getNombre().toLowerCase().concat(" ").concat(autor.getApellidos().toLowerCase()));
 		return restService.nuevoAutor(autor);
 	}
 	
@@ -114,8 +114,8 @@ public class WSRestController {
 	}
 	@RequestMapping(value = RestUrisConstants.GET_OBRAS_OF_MUSEO_BY_AUTOR , method = RequestMethod.GET)
 	public List<Obra> getObraOfMuseoByAutor(@PathVariable("museo") String museo, @PathVariable("nombreAutor") String autor) {
-		System.out.println("AUTOR");
-		return restService.getObraOfMuseoByAutor(museo, autor);
+		System.out.println("AUTORRRRRRRRRRRRRRR");
+		return restService.getObraOfMuseoByAutor(museo, autor.toLowerCase());
 	}
 	
 	@RequestMapping(value=RestUrisConstants.AUTORES_AND_COLECCIONES, method = RequestMethod.GET )
