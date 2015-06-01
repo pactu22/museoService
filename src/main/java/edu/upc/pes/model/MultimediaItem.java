@@ -22,6 +22,22 @@ public class MultimediaItem {
 	public MultimediaItem(){
 		
 	}
+	public MultimediaItem(String id, String type){
+		this.id = id;
+		this.type = type;
+	}
+	public MultimediaItem(String id, String type, byte[] content){
+		this.id = id;
+		this.type = type;
+		this.content = content;
+	}
+	public MultimediaItem(String id, String type, byte[] content, Obra o){
+		this.id = id;
+		this.type = type;
+		this.content = content;
+		obra = o;
+		
+	}
 	public MultimediaItem(String type, byte[] content, Obra o){
 		this.type = type;
 		this.content = content;
