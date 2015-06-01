@@ -11,8 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Obra {
 
@@ -34,7 +32,7 @@ public class Obra {
 	@ManyToOne
 	private Coleccion coleccion;
 
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "obra",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
  	private List<MultimediaItem> multimediaItems;
 	
