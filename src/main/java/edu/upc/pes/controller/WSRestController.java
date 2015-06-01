@@ -44,7 +44,7 @@ public class WSRestController {
 	
 	@RequestMapping(value = RestUrisConstants.NEW_OBRA_OF_MUSEO, method = RequestMethod.POST)
 	public Obra nuevaObraAlMuseo(@RequestBody WrapperObra obra, @PathVariable("museo") String museo) {
-		System.out.println("DENTRO");
+		System.out.println("DENTRO     " + obra.getItems().size());
 		return restService.nuevaObraMuseo(obra,museo);
 	}
 

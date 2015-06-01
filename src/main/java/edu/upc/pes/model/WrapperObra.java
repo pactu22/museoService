@@ -2,6 +2,7 @@ package edu.upc.pes.model;
 
 import java.util.List;
 
+
 public class WrapperObra {
 
 	
@@ -49,11 +50,13 @@ public class WrapperObra {
 	public void setInformacion(String informacion) {
 		this.informacion = informacion;
 	}
-	public List<MultimediaItem> getIdsMultimedia() {
+
+	public List<MultimediaItem> getItems() {
 		return items;
 	}
-	public void setIdsMultimedia(List<MultimediaItem> items) {
+	public void setItems(List<MultimediaItem> items) {
 		this.items = items;
 	}
-	
+
+
 }
