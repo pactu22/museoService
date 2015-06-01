@@ -12,7 +12,6 @@ public class MultimediaItem {
 	@Id
 	private String id;
 	private String type; // para indicar img, sound, video
-	@JsonIgnore
 	private byte[] content;  // Este tipo de dato Java (array of byte) creara en Postgres una columna BYTEA que sirve para almacenar imagenes
 
 	
