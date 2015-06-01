@@ -11,7 +11,7 @@ public class WrapperObra {
 	private Long idAutor;
 	private String nombreColeccion;
 	private String informacion;
-	private List<Long> idsMultimedia;
+	private List<MultimediaItem> items;
 	
 	public String getTitulo() {
 		return titulo;
@@ -49,11 +49,11 @@ public class WrapperObra {
 	public void setInformacion(String informacion) {
 		this.informacion = informacion;
 	}
-	public List<Long> getIdsMultimedia() {
-		return idsMultimedia;
+	public List<MultimediaItem> getIdsMultimedia() {
+		return items;
 	}
-	public void setIdsMultimedia(List<Long> idsMultimedia) {
-		this.idsMultimedia = idsMultimedia;
+	public void setIdsMultimedia(List<MultimediaItem> items) {
+		this.items = items;
 	}
 	
 }
