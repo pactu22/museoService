@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,7 +22,9 @@ public class Obra {
 	
 	private String titulo;
 	private long idBeacon;
+
 	@ManyToOne
+	@OrderBy("nombreYApellidos")
 	private Autor autor;
 	private String estilo;
 	

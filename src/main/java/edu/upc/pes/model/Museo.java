@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,7 +23,8 @@ public class Museo {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "museo",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
- 	private List<Obra> obras;
+	@OrderBy("titulo")
+	private List<Obra> obras;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "museo",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
@@ -30,6 +32,7 @@ public class Museo {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "museo",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@OrderBy("nombre ASC")
 	private List<Coleccion> colecciones;  
 	
 	
